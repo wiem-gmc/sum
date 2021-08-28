@@ -1,19 +1,32 @@
 ALGORITHM Sum_basic
 
 VAR
-
-    tab1 : ARRAY_OF INTEGER[];
-    tab2 : ARRAY_OF INTEGER[];
-    sum : INTEGER :=0;
-    i,j: INTEGER;
-
+      tab1,tab2:Array[];
+      sumDist,sumOver ,count:INTEGER;
 BEGIN
-For i FROM 0 TO tab1.lenght -1 STEP 1 do
-    FOR j FROM 0 TO tab2.lenght - 1 STEP 1 DO
-        IF tab1[i]=!tab2[j] Then
-            sum+= tab1[i]+tab2[j];
-        END_IF
-    END_FOR
-END_FOR
-Write(sum);
+      read(tab1)
+      read(tab2);
+      sumDist :=0;
+      sumOver :=0;
+
+      FOR i FROM 0 TO tab1.length-1 STEP 1  DO
+            FOR j FROM 0 TO tab2.length-1 STEP 1  DO
+                  IF (tab1[i] = tab2[j]) THEN
+                        sumOver = sumOver+tab1[i]+tab2[j];
+                        
+                        ELSE
+                        IF (tab1.length > tab2.length) THEN
+                              sumDist :=sumDist + tab1[i]
+                        ELSE
+                              sumDist :=sumDist + tab2[j]
+                        END_IF
+                              
+                        END_IF
+                  END_IF
+            END_FOR
+      END_FOR
+      Write('sum of the distinct elements ', sumDist)
+      Write('sum of overlapping elements:', sumOver)
+
+      
 END
