@@ -1,0 +1,29 @@
+ALGORITHM hashTableSolution
+VAR
+      tab1,tab2 : HASH_TABLE<INTEGER,INTEGER>;
+      sumDist,sumOver :INTEGER;
+
+BEGIN
+      read(tab1);
+      read(tab2);
+      FOR i FROM 0 TO tab2.length -1 STEP 1  DO
+            IF (tab1.lookup(tab2.get(i) = TRUE) THEN
+                  count := tab1.get(tab2.get(i));
+                  tab1.insert(tab2.get(i),count+1);
+            ELSE
+                  tab1.insert(tab2.get(i),1);
+            END_IF
+      END_FOR
+
+      FOR i FROM 0 TO tab2.length -1 STEP 1  DO
+      IF (tab1.get(tab2.get(i)) > 1) THEN
+            sumOver := sumOver + tab1.get(i);
+            ELSE
+                  sumDist := sumDist +tab2.get(i)
+            END_IF
+      END_IF
+      END_FOR
+
+      Write('sum of the distinct elements ', sumDist);
+      Write('sum of overlapping elements:', sumOver);
+      END
